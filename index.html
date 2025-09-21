@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HỘ KINH DOANH LÊ VĂN LONG – Sơn, Bả tường & Vật tư hoàn thiện</title>
+  <meta name="description" content="Bán buôn vật liệu, thiết bị lắp đặt khác trong xây dựng (4663). Chuyên sơn nước, bả tường và vật tư hoàn thiện tại Thị xã Quảng Yên, Tỉnh Quảng Ninh.">
+  <style>
+    :root{
+      --primary:#b91c1c; --accent:#eab308; --ink:#111827; --muted:#6b7280;
+      --bg:#fffdf5; --card:#ffffff; --bd:#e5e7eb; --shadow:0 10px 26px rgba(17,24,39,.08);
+    }
+    html,body{height:100%}
+    body{margin:0;display:flex;flex-direction:column;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1120px;margin:auto;padding:18px}
+
+    /* HEADER */
+    header{background:linear-gradient(135deg,var(--primary),#7c2d12);color:#fff;box-shadow:var(--shadow);position:relative}
+    .nav{max-width:1120px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800}
+    .brand span {
+  color:#fff;
+  background:none;
+  padding:0;
+  border-radius:0;
+}
+    .menu{display:flex;gap:10px}
+    /* Thêm hoặc chỉnh lại đoạn này trong <style> của index.html */
+.menu a {
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.12);
+  font-weight: 700; /* Thêm dòng này để font chữ đậm giống các trang con */
+}
+
+.menu a:hover {
+  background: rgba(255,255,255,.22);
+}
+
+    .cta a{background:#fff;color:var(--primary);font-weight:700;padding:9px 14px;border-radius:12px;display:inline-block;text-align:center}
+    .cta a:hover{filter:brightness(1.07)}
+    .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px;border-radius:8px;background:rgba(255,255,255,.12)}
+    .hamburger span{width:24px;height:3px;background:#fff;border-radius:2px;display:block}
+
+    /* HERO */
+    .hero{position:relative}
+    .hero .cover{height:420px;background:url('images/hero-xd.jpg') center/cover no-repeat}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,.2) 40%,transparent)}
+    .hero .text{position:absolute;left:0;right:0;bottom:0;color:#fff;max-width:1120px;margin:0 auto;padding:20px}
+    .hero h1{margin:0 0 6px;font-size:30px}
+    .hero p{margin:0;opacity:.95}
+    .btns a{display:inline-block;margin:10px 8px 0 0;padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#f59e0b);color:#111827;font-weight:700}
+
+    /* CONTENT */
+    .title{text-align:center;margin:26px 0 12px}
+    .title h2{margin:6px 0;color:var(--primary)}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transition:transform .2s ease}
+    .card:hover{transform:translateY(-3px)}
+    .card img{width:100%;height:auto;display:block}
+    .card .body{padding:14px}
+    .badge{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--primary),var(--accent));padding:4px 8px;border-radius:999px;margin-bottom:8px}
+    .card h3{margin:6px 0 2px;color:var(--primary)}
+
+    .cols{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px}
+    .panel{background:var(--card);border:1px solid var(--bd);border-radius:16px;box-shadow:var(--shadow);padding:18px}
+    .panel h3{margin:0 0 10px;color:var(--primary)}
+    .list li{margin:8px 0}
+    .legal .row{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+    .legal .tag{min-width:150px;font-weight:800;color:var(--primary)}
+    .note{font-size:13px;color:var(--muted)}
+
+    footer{margin-top:auto;background:#111827;color:#fde68a}
+    footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+    footer a{color:#fde68a}
+
+    /* Responsive */
+    @media (max-width:992px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .cols{grid-template-columns:1fr}
+      .hero .cover{height:360px}
+    }
+
+    /* <= 768px: header chuyển qua 2 hàng để tránh chồng chéo */
+    @media (max-width:768px){
+      .nav{
+        display:grid;
+        grid-template-columns:1fr auto; /* brand | hamburger */
+        grid-row-gap:8px;
+        align-items:center;
+      }
+      .hamburger{display:flex;justify-self:end}
+      .menu{
+        display:none; /* ẩn mặc định */
+        position:fixed; right:12px; top:64px; /* luôn dưới header */
+        flex-direction:column; gap:8px;
+        background:var(--primary);
+        padding:12px; border-radius:10px; box-shadow:var(--shadow);
+        z-index:1000;
+      }
+      .menu.show{display:flex}
+      .cta a, .cta-call {
+  display:block !important;
+  width:100% !important;
+  margin:8px 0 0 !important;
+  padding:10px 16px !important;
+  border-radius:12px !important;
+  box-sizing:border-box;     /* rất quan trọng để không tràn vì padding */
+}
+
+
+    @media (max-width:480px){
+      .hero h1{font-size:20px}
+      .hero .cover{height:300px}
+      .btns a{padding:8px 12px;font-size:14px}
+      .grid{grid-template-columns:1fr}
+      .title h2{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">HỘ KINH DOANH <span>LÊ VĂN LONG</span></div>
+
+    <!-- Menu (ẩn trên mobile, bật bằng hamburger) -->
+    <nav class="menu" id="mainMenu">
+      <a href="index.html">Trang chủ</a>
+      <a href="dich-vu.html">Dịch vụ</a>
+      <a href="du-an.html">Dự án</a>
+      <a href="lien-he.html">Liên hệ</a>
+    </nav>
+
+    <!-- Nút hamburger -->
+    <button class="hamburger" aria-label="Mở menu" aria-controls="mainMenu" aria-expanded="false" id="btnHamburger">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- CTA (xuống hàng 2 trên mobile, full-width) -->
+    <div class="cta"><a href="tel:0983722320">Gọi: 0983 722 320</a></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="cover"></div>
+  <div class="overlay"></div>
+  <div class="text">
+    <h1>Sơn, bả tường & vật tư hoàn thiện tại Thị xã Quảng Yên</h1>
+    <p>Ngành kinh doanh chính: 4663 – Bán buôn vật liệu, thiết bị lắp đặt khác trong xây dựng</p>
+    <div class="btns">
+      <a href="dich-vu.html">Xem sản phẩm</a>
+      <a href="lien-he.html">Tư vấn nhanh</a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="title">
+    <h2>Sản phẩm tiêu biểu</h2>
+    <p class="muted">Hàng chính hãng – Giao nhanh – Tư vấn phối màu</p>
+  </div>
+
+  <section class="grid">
+    <article class="card">
+      <img src="images/son-nuoc.jpg" alt="Sơn nước">
+      <div class="body">
+        <span class="badge">4663</span>
+        <h3>Sơn nước & sơn lót</h3>
+        <p class="muted">Sơn nội/ngoại thất, sơn chống kiềm, chống thấm.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="images/ba-tuong.jpg" alt="Bả tường">
+      <div class="body">
+        <span class="badge">Bả tường</span>
+        <h3>Bột bả – Mastic</h3>
+        <p class="muted">Bả mịn, bả dẻo, phụ gia, giấy nhám, bay.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="images/vattu-hoanthien.jpg" alt="Vật tư hoàn thiện">
+      <div class="body">
+        <span class="badge">Phụ trợ</span>
+        <h3>Vật tư hoàn thiện</h3>
+        <p class="muted">Băng keo, bạt phủ, cọ lăn, băng dính.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="cols" style="margin-top:26px">
+    <div class="panel">
+      <h3>Lý do chọn LÊ VĂN LONG</h3>
+      <ul class="list">
+        <li>Chuyên sâu sơn & bả tường – tư vấn đúng nhu cầu.</li>
+        <li>Hàng mới, rõ nguồn gốc, giá chuẩn.</li>
+        <li>Giao nhanh tại Quảng Yên – hỗ trợ bốc xếp.</li>
+        <li>Hỗ trợ kỹ thuật thi công, định mức, phối màu.</li>
+      </ul>
+    </div>
+    <div class="panel legal">
+      <h3>Thông tin pháp lý</h3>
+      <div class="row"><div class="tag">Chủ hộ kinh doanh:</div> LÊ VĂN LONG</div>
+      <div class="row"><div class="tag">Mã số HKD:</div> 8396697049-002</div>
+      <div class="row"><div class="tag">Mã số ĐK HKD:</div> 22N8013848</div>
+      <div class="row"><div class="tag">Ngành chính:</div> 4663 – Bán buôn VLXD (Bán sơn, bả tường)</div>
+      <div class="row"><div class="tag">Điện thoại:</div> 0983 722 320</div>
+	  <div class="row"><div class="tag">Email:</div> lienhe@hokinhdoanhlevanlong.online</div>
+      <div class="row"><div class="tag">Địa chỉ:</div> Thôn 11, Xã Sông Khoai, Quảng Yên, Quảng Ninh</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2025 Hộ Kinh Doanh LÊ VĂN LONG • Thôn 11, Xã Sông Khoai, Thị xã Quảng Yên, Tỉnh Quảng Ninh, Việt Nam</div>
+    <div><a href="dich-vu.html">Sản phẩm</a> • <a href="lien-he.html">Liên hệ</a></div>
+  </div>
+</footer>
+
+<script>
+  // Toggle menu mobile & sync aria-expanded
+  const btn = document.getElementById('btnHamburger');
+  const menu = document.getElementById('mainMenu');
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('show');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+  });
+  // Đóng menu khi bấm ra ngoài
+  document.addEventListener('click', (e) => {
+    if(!menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('show');
+      btn.setAttribute('aria-expanded','false');
+    }
+  });
+</script>
+</body>
+</html>

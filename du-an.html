@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dự án đã thực hiện – Hộ Kinh Doanh LÊ VĂN LONG</title>
+  <meta name="description" content="Các công trình sơn bả & hoàn thiện tiêu biểu do Hộ Kinh Doanh LÊ VĂN LONG thực hiện tại Thị xã Quảng Yên, Tỉnh Quảng Ninh.">
+
+  <style>
+    :root{
+      /* Đồng bộ màu với index: đỏ rượu & vàng đồng */
+      --primary:#b91c1c;          /* đỏ chủ đạo */
+      --primary-700:#7c2d12;      /* đỏ nâu đậm cho tiêu đề phụ */
+      --secondary:#eab308;        /* vàng đồng cho CTA */
+      --ink:#111827;              /* mực */
+      --muted:#6b7280;
+      --paper:#fffdf5;            /* nền ngà */
+      --white:#fff;
+      --shadow:0 8px 24px rgba(17,24,39,.08);
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.6;
+    }
+
+    /* Header (giữ bố cục: brand + nav phải) + màu mới */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:linear-gradient(135deg, var(--primary) 0%, #a11a1a 50%, var(--primary-700) 100%);
+      color:#fff;
+      box-shadow:var(--shadow);
+    }
+    .nav{
+      max-width:1080px; margin:auto;
+      padding:14px 18px;
+      display:flex; align-items:center; gap:18px;
+    }
+    .brand{
+      font-weight:800; letter-spacing:.2px;
+      text-transform:uppercase;
+      font-size:17px;
+      white-space:nowrap;
+      display:flex; gap:10px; align-items:center;
+    }
+    .brand span {
+  color:#fff;
+  background:none;
+  padding:0;
+  border-radius:0;
+}
+
+    /* desktop nav */
+    .menu{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
+    .menu a{
+      color:#fff; text-decoration:none;
+      padding:10px 14px; border-radius:999px;
+      font-weight:700; opacity:.95; background:rgba(255,255,255,.12)
+    }
+    .menu a:is(:hover,:focus){background:rgba(255,255,255,.2)}
+    .menu a.active{background:rgba(255,255,255,.25)}
+
+    /* hamburger (mobile) */
+    .hamburger{
+      display:none; margin-left:auto;
+      flex-direction:column; gap:4px; cursor:pointer;
+      padding:8px; border-radius:8px; background:rgba(255,255,255,.12); border:none
+    }
+    .hamburger span{ width:24px; height:3px; background:#fff; border-radius:2px; display:block }
+
+    /* Mobile panel menu */
+    #mobileMenu{
+      position:fixed; right:12px; top:64px; z-index:1000;
+      display:none; flex-direction:column; gap:8px;
+      background:var(--primary); padding:12px; border-radius:10px; box-shadow:var(--shadow)
+    }
+    #mobileMenu a{color:#fff; padding:10px 14px; border-radius:10px; background:rgba(255,255,255,.12); font-weight:700}
+    #mobileMenu a:hover{background:rgba(255,255,255,.22)}
+    #mobileMenu.show{display:flex}
+
+    /* Page title */
+    .hero{
+      max-width:1080px; margin:22px auto 0; padding:0 18px 8px;
+    }
+    .hero h1{
+      margin:0 0 6px; font-size:28px; color:var(--primary);
+    }
+    .hero p{margin:0; color:var(--muted)}
+
+    /* Grid projects (giữ layout) */
+    .wrap{max-width:1080px; margin:22px auto; padding:0 18px}
+    .grid{
+      display:grid; gap:18px;
+      grid-template-columns:repeat(3,1fr);
+    }
+    @media (max-width:992px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:680px){ .grid{grid-template-columns:1fr} }
+
+    article.card{
+      background:var(--white);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex; flex-direction:column;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    article.card:hover{ transform:translateY(-2px); box-shadow:0 14px 36px rgba(17,24,39,.12) }
+    .thumb{
+      width:100%; height:210px; object-fit:cover; display:block;
+      background:#e2e8f0;
+    }
+    .body{ padding:14px 16px 18px }
+    .body h3{
+      margin:0 0 6px; font-size:17px; color:var(--primary-700);
+    }
+    .muted{ color:var(--muted); font-size:14.5px }
+
+    /* Info + CTA dưới cùng */
+    .more{
+      margin-top:26px; background:var(--white);
+      border-radius:var(--radius); padding:22px;
+      box-shadow:var(--shadow);
+    }
+    .more h2{ margin:0 0 10px; color:var(--primary) }
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap; margin-top:10px
+    }
+    .btn{
+      display:inline-block; text-decoration:none; font-weight:800;
+      border-radius:10px; padding:12px 18px;
+      transition:filter .16s ease, transform .12s ease;
+    }
+    .btn:is(:hover,:focus){ filter:brightness(.98); transform:translateY(-1px) }
+    .btn-primary{ background:linear-gradient(135deg,var(--secondary),#f59e0b); color:#111827 }
+    .btn-outline{ background:transparent; color:#111827; border:2px solid var(--secondary) }
+
+    /* Footer: đồng bộ tông */
+    footer{
+      background:#111827; color:#fde68a; margin-top:32px
+    }
+    .foot{ max-width:1080px; margin:auto; padding:18px; text-align:center; font-size:14px }
+    
+    /* Mobile header tweaks */
+    @media (max-width:768px){
+      .menu{ display:none }            /* ẩn menu desktop */
+      .hamburger{ display:flex }       /* hiện hamburger */
+      .brand{ font-size:16px }
+    }
+	/* === Đồng bộ bo góc nav với Trang chủ & Dịch vụ === */
+.menu a{
+  border-radius: 8px !important;      /* từ 999px -> 8px */
+}
+
+/* Menu trong panel mobile cũng đồng bộ */
+#mobileMenu a{
+  border-radius: 8px !important;      /* từ 10px -> 8px (nếu có) */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav">
+      <div class="brand">HỘ KINH DOANH <span>LÊ VĂN LONG</span></div>
+
+      <!-- menu desktop -->
+      <nav class="menu" aria-label="Điều hướng chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="dich-vu.html">Dịch vụ</a>
+        <a href="du-an.html" class="active">Dự án</a>
+        <a href="lien-he.html">Liên hệ</a>
+      </nav>
+
+      <!-- hamburger mobile -->
+      <button class="hamburger" id="btnHamburger" aria-label="Mở menu" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- panel menu mobile -->
+    <nav id="mobileMenu" aria-label="Menu di động">
+      <a href="index.html">Trang chủ</a>
+      <a href="dich-vu.html">Dịch vụ</a>
+      <a href="du-an.html">Dự án</a>
+      <a href="lien-he.html">Liên hệ</a>
+    </nav>
+  </header>
+
+  <!-- Title -->
+  <section class="hero">
+    <h1>Công trình sơn bả tiêu biểu</h1>
+    <p>Những dự án đã thực hiện tại <strong>Thị xã Quảng Yên, Tỉnh Quảng Ninh</strong> – các hạng mục sơn bả tường, hoàn thiện bề mặt và vật tư phụ trợ.</p>
+  </section>
+
+  <main class="wrap">
+    <div class="grid">
+      <!-- 1 -->
+      <article class="card">
+        <img class="thumb" src="images/du-an-noi-that.jpg" alt="Sơn nội thất – Phường Yên Hải" />
+        <div class="body">
+          <h3>Sơn nội thất – Phường Yên Hải</h3>
+          <p class="muted">Bả mịn 2 lớp + sơn phủ chống bám bẩn cho khu nhà ở liền kề. Phối màu tông ấm, hoàn thiện trong 3 ngày.</p>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card">
+        <img class="thumb" src="images/du-an-ngoai-that.jpg" alt="Sơn ngoại thất – Xã Sông Khoai" />
+        <div class="body">
+          <h3>Sơn ngoại thất – Xã Sông Khoai</h3>
+          <p class="muted">Hệ sơn chống kiềm + chống thấm cho mặt tiền; vệ sinh bề mặt & xử lý rêu mốc trước thi công.</p>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card">
+        <img class="thumb" src="images/du-an-batuong.jpg" alt="Bả tường – Quảng Yên" />
+        <div class="body">
+          <h3>Bả tường – Khu dân cư Quảng Yên</h3>
+          <p class="muted">Thi công bột bả mịn, xử lý nứt chân chim; bàn giao bề mặt phẳng – sẵn sàng cho sơn hoàn thiện.</p>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card">
+        <img class="thumb" src="images/du-an-chongthap.jpg" alt="Chống thấm ban công" />
+        <div class="body">
+          <h3>Chống thấm – Ban công & sân thượng</h3>
+          <p class="muted">Sơn lót kháng kiềm, lớp phủ đàn hồi; bảo hành thấm dột theo hạng mục.</p>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card">
+        <img class="thumb" src="images/du-an-shop.jpg" alt="Sơn cửa hàng" />
+        <div class="body">
+          <h3>Sơn cửa hàng – Trung tâm Quảng Yên</h3>
+          <p class="muted">Sơn nhanh ban đêm, mùi thấp; phối màu theo nhận diện thương hiệu của khách hàng.</p>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="card">
+        <img class="thumb" src="images/du-an-truonghoc.jpg" alt="Sơn sửa phòng học" />
+        <div class="body">
+          <h3>Sơn sửa phòng học – Trường tiểu học</h3>
+          <p class="muted">Sơn nước tiêu chuẩn an toàn, ít mùi; vệ sinh hiện trường sạch sẽ sau thi công.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Info + CTA -->
+    <section class="more">
+      <h2>Cam kết thi công của Hộ Kinh Doanh LÊ VĂN LONG</h2>
+      <p>
+        Tư vấn đúng nhu cầu – đúng định mức – tối ưu chi phí. Vật liệu rõ nguồn gốc, hàng mới. Hỗ trợ
+        phối màu & kỹ thuật bả – sơn cho từng bề mặt. Khu vực phục vụ chính: <strong>Thị xã Quảng Yên, Tỉnh Quảng Ninh</strong>.
+      </p>
+      <div class="cta">
+        <a href="lien-he.html" class="btn btn-primary">Liên hệ: 0983 722 320</a>
+        <a href="dich-vu.html" class="btn btn-outline">Xem danh mục sản phẩm</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="foot">
+      © 2025 Hộ Kinh Doanh LÊ VĂN LONG • Thôn 11, Xã Sông Khoai, Thị xã Quảng Yên, Tỉnh Quảng Ninh, Việt Nam • Điện thoại: 0983 722 320
+    </div>
+  </footer>
+
+  <script>
+    // Toggle mobile menu + đóng khi click ngoài / ESC
+    const btn = document.getElementById('btnHamburger');
+    const mob = document.getElementById('mobileMenu');
+    if(btn){
+      btn.addEventListener('click', () => {
+        const open = mob.classList.toggle('show');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      document.addEventListener('click', (e) => {
+        if(!mob.contains(e.target) && !btn.contains(e.target)){
+          mob.classList.remove('show');
+          btn.setAttribute('aria-expanded','false');
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape'){
+          mob.classList.remove('show');
+          btn.setAttribute('aria-expanded','false');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

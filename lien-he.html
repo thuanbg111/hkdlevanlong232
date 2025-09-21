@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Liên hệ – HỘ KINH DOANH LÊ VĂN LONG</title>
+  <meta name="description" content="Liên hệ tư vấn sơn, bả tường & vật tư hoàn thiện (4663) tại Thị xã Quảng Yên, Tỉnh Quảng Ninh.">
+  <style>
+    :root{
+      --primary:#b91c1c; --primary2:#7c2d12; --accent:#eab308;
+      --ink:#111827; --muted:#6b7280; --paper:#fffdf5;
+      --card:#ffffff; --bd:#e5e7eb; --shadow:0 10px 26px rgba(17,24,39,.08);
+      --nav-radius:8px;
+    }
+    *,*::before,*::after{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; min-height:100vh; display:flex; flex-direction:column;
+      font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--paper); color:var(--ink); line-height:1.6;
+    }
+    a{ color:inherit; text-decoration:none }
+    img{ max-width:100%; height:auto; display:block }
+    .wrap{ max-width:1120px; margin:auto; padding:18px }
+
+    /* ===== Header (đồng bộ index) ===== */
+    header{ background:linear-gradient(135deg,var(--primary),var(--primary2)); color:#fff; box-shadow:var(--shadow) }
+    .nav{ max-width:1120px; margin:0 auto; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px }
+    .brand{ display:flex; gap:10px; align-items:center; font-weight:800; letter-spacing:.2px; white-space:nowrap }
+    .brand span {
+  color:#fff;
+  background:none;
+  padding:0;
+  border-radius:0;
+}
+    nav.menu{ display:flex; gap:8px; flex-wrap:wrap }
+    nav.menu a{ color:#fff; padding:8px 12px; border-radius:var(--nav-radius); background:rgba(255,255,255,.12); font-weight:700 }
+    nav.menu a:hover{ background:rgba(255,255,255,.22) }
+    .cta a{ background:#fff; color:var(--primary); font-weight:800; padding:9px 14px; border-radius:12px; display:inline-block }
+    .hamburger{ display:none; margin-left:auto; flex-direction:column; gap:4px; cursor:pointer; padding:8px; border-radius:8px; background:rgba(255,255,255,.12); border:none }
+    .hamburger span{ width:24px; height:3px; background:#fff; border-radius:2px; display:block }
+    #mobileMenu{ display:none } /* ẩn default ở desktop */
+
+    /* ===== Title ===== */
+    .title{ text-align:center; margin:26px 0 12px }
+    .title h1{ margin:6px 0; color:var(--primary) }
+    .muted{ color:var(--muted) }
+
+    /* ===== Contact layout ===== */
+    .contact{ display:flex; justify-content:center; padding:12px 18px 56px }
+    .grid{ max-width:1100px; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:18px }
+    .card{ background:var(--card); border:1px solid var(--bd); border-radius:16px; box-shadow:var(--shadow); padding:18px }
+    .card h2{ margin:0 0 10px; color:var(--primary) }
+    .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px }
+    .form-row.single{ grid-template-columns:1fr }
+    input,textarea{
+      width:100%; padding:12px; border:1px solid #d9e1e4; border-radius:10px; background:#fff;
+      outline:none; font-size:15px; transition:border .2s, box-shadow .2s;
+    }
+    input:focus,textarea:focus{ border-color:var(--primary); box-shadow:0 0 0 4px rgba(185,28,28,.12) }
+    textarea{ min-height:140px; resize:vertical }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      background:linear-gradient(135deg,var(--accent),#f59e0b);
+      color:#111827; border:0; border-radius:12px; padding:12px 18px;
+      font-weight:800; cursor:pointer; box-shadow:0 8px 16px rgba(234,179,8,.22);
+    }
+
+    .info{ margin-top:14px; border-top:1px dashed #e7edef; padding-top:12px; line-height:1.6 }
+
+    /* ===== MAP: không tràn + giữ tỉ lệ ===== */
+    .map{
+      position:relative;
+      border-radius:16px;
+      overflow:hidden;              /* cắt triệt để phần thừa */
+      background:#eef2f7;
+      /* tỉ lệ khung: 16:10 (đẹp trên desktop) */
+    }
+    .map::before{
+      content:"";
+      display:block;
+      padding-top:62.5%;            /* 10/16 = 0.625 => 62.5% */
+    }
+    .map iframe{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      border:0; display:block;
+    }
+
+    /* ===== Footer ===== */
+    footer{ margin-top:auto; background:#111827; color:#fde68a }
+    footer .wrap{ display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center }
+
+    /* ===== Responsive ===== */
+    @media (max-width:992px){ .grid{ grid-template-columns:1fr } }
+    @media (max-width:768px){
+      .wrap{ padding:12px }
+      .nav{ display:grid; grid-template-columns:1fr auto; grid-row-gap:8px; align-items:center; padding:12px 12px }
+      nav.menu{ display:none } .hamburger{ display:flex; justify-self:end }
+      #mobileMenu{
+        position:fixed; right:12px; top:64px; z-index:1000;
+        display:none; flex-direction:column; gap:8px;
+        background:var(--primary); padding:12px; border-radius:10px; box-shadow:var(--shadow)
+      }
+      #mobileMenu.show{ display:flex }
+      #mobileMenu a{ color:#fff; padding:8px 12px; border-radius:var(--nav-radius); background:rgba(255,255,255,.12); font-weight:700 }
+      #mobileMenu a:hover{ background:rgba(255,255,255,.22) }
+
+      /* Tỉ lệ map trên mobile: 4:3 để cao hơn, nhìn rõ */
+      .map::before{ padding-top:75%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="nav">
+      <div class="brand">HỘ KINH DOANH <span>LÊ VĂN LONG</span></div>
+      <nav class="menu" aria-label="Điều hướng chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="dich-vu.html">Dịch vụ</a>
+        <a href="du-an.html">Dự án</a>
+        <a href="lien-he.html">Liên hệ</a>
+      </nav>
+      <button class="hamburger" id="btnHamburger" aria-label="Mở menu" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="cta"><a href="tel:0983722320">Gọi: 0983 722 320</a></div>
+    </div>
+
+    <nav id="mobileMenu" aria-label="Menu di động">
+      <a href="index.html">Trang chủ</a>
+      <a href="dich-vu.html">Dịch vụ</a>
+      <a href="du-an.html">Dự án</a>
+      <a href="lien-he.html">Liên hệ</a>
+    </nav>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <main class="wrap">
+    <div class="title">
+      <h1>Liên hệ với Hộ Kinh Doanh LÊ VĂN LONG</h1>
+      <p class="muted">Gửi yêu cầu – chúng tôi sẽ phản hồi sớm. Phục vụ khu vực <strong>Thị xã Quảng Yên, Tỉnh Quảng Ninh</strong>.</p>
+    </div>
+
+    <section class="contact">
+      <div class="grid">
+        <!-- FORM -->
+        <div class="card">
+          <h2>Gửi yêu cầu tư vấn</h2>
+          <form action="#" method="post" autocomplete="off">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Họ và tên" required>
+              <input type="tel" name="phone" placeholder="Số điện thoại" required>
+            </div>
+            <div class="form-row single">
+              <textarea name="message" placeholder="Mô tả nhu cầu: sơn, bả tường, vật tư… hoặc đặt lịch khảo sát" required></textarea>
+            </div>
+            <button type="submit" class="btn">📨 Gửi thông tin</button>
+          </form>
+
+          <div class="info">
+            Điện thoại: <strong>0983 722 320</strong><br>
+            <strong>Địa chỉ:</strong> Thôn 11, Xã Sông Khoai, Thị xã Quảng Yên, Tỉnh Quảng Ninh, Việt Nam<br>
+            <strong>Email:</strong> lienhe@hokinhdoanhlevanlong.online
+          </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="card">
+          <h2>Bản đồ đường đi</h2>
+          <div class="map">
+            <iframe
+              src="https://www.google.com/maps?q=S%C3%B4ng%20Khoai,%20Qu%E1%BA%A3ng%20Y%C3%AAn,%20Qu%E1%BA%A3ng%20Ninh&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrap">
+      <div>© 2025 Hộ Kinh Doanh LÊ VĂN LONG • Thôn 11, Xã Sông Khoai, Thị xã Quảng Yên, Tỉnh Quảng Ninh, Việt Nam</div>
+      <div><a href="dich-vu.html">Dịch vụ</a> • <a href="du-an.html">Dự án</a> • <a href="lien-he.html">Liên hệ</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle mobile menu + đóng khi click ngoài/ESC
+    const btn = document.getElementById('btnHamburger');
+    const mob = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      const open = mob.classList.toggle('show');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (e) => {
+      if(!mob.contains(e.target) && !btn.contains(e.target)){
+        mob.classList.remove('show');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){
+        mob.classList.remove('show');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+  </script>
+</body>
+</html>
